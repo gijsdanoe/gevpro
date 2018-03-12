@@ -13,14 +13,12 @@ Main function:
     Presenting haikus (printing or posting on Twitter) 
 
 Generating haikus method:
-    functie CountSyllables(StripStressMarkers($3))
-
-
+    ...
 
 Bijeenkomsten:
 ma 12-3 13.00-17.00
-
-
+ma 19-3 15.00-17.00
+ma 20-3 13.00-17.00
 
 
 
@@ -28,7 +26,8 @@ ma 12-3 13.00-17.00
 Wanneer:    Hoelang:    Wat:                                                    Wie:
 7-3-2018    2 uur       Team en repository aanmaken en lokaal klonen            Allemaal
 12-3-2018   1 uur       Overleggen over functies                                Allemaal
-12-3-2018   2 uur       Main functie schrijven                                  Jan en Inge
+12-3-2018   1 uur       Main() en tokenize() schrijven                          Inge
+12-3-2018   1,5 uur     Main() schrijven                                        Jan en Inge
 
 
 
