@@ -28,6 +28,7 @@ Wanneer:    Hoelang:    Wat:                                                    
 12-3-2018   1 uur       Overleggen over functies                                Allemaal
 12-3-2018   1 uur       Main() en tokenize() schrijven                          Inge
 12-3-2018   1,5 uur     Main() schrijven                                        Jan en Inge
+12-3-2018   3 uur       sylcount.py schrijven                                   Gijs, Thomas, Jan
 
 
 
