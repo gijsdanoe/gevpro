@@ -22,7 +22,10 @@ ma 12-3 13.00-17.00
 
 ### Logboek ###
 Wanneer:    Hoelang:    Wat:                                                    Wie:
-7-3-2018 	2 uur       Team en repository aanmaken en lokaal klonen            Allemaal
+7-3-2018    2 uur       Team en repository aanmaken en lokaal klonen            Allemaal
+12-3-2018   1 uur       Overleggen over functies                                Allemaal
+12-3-2018   2 uur       Main functie schrijven                                  Jan en Inge
+
 
 
 
