@@ -13,10 +13,14 @@ Main function:
     Presenting haikus (printing or posting on Twitter) 
 
 Generating haikus method:
-    ...
+    functie CountSyllables(StripStressMarkers($3))
+
+
 
 Bijeenkomsten:
 ma 12-3 13.00-17.00
+
+
 
 
 
