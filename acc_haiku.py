@@ -7,16 +7,16 @@ import nltk
 from random import *
  
     
-def get_syl(string):
-    """Returns a list of the syllables of the words in the tweet."""
+#def get_syl(string):
+    #"""Returns a list of the syllables of the words in the tweet."""
 
 
-def count_syl(string):
+def count_syl(tweet:
     """Counts the syllables of a tweet."""
 
 
-def generate_haiku(syllables):
-    """Converts a tweet into a haiku."""
+#def generate_haiku(syllables):
+    #"""Converts a tweet into a haiku."""
 
 
 def tokenize(text):
@@ -34,9 +34,15 @@ def main():
         for line in tweets:
             list_tweets.append(tokenize(line)[1:])
     tweet = list_tweets[randrange(0, len(list_tweets))]
-    while count_syl(tweet) is not 17:
+    number_syl = 0
+    for word in tweet:
+        number_syl = numb_syl + count_syl(word)
+    if number_syl 
         tweet = list_tweets[randrange(0, len(list_tweets))]
-    print(generate_haiku(get_syl(tweet)))
+        for word in tweet:
+            number_syl = numb_syl + count_syl(word)
+    else:
+        print(tweet)
 
 
 if __name__ == "__main__":
