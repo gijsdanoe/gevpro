@@ -10,26 +10,27 @@
 import sys
 import re
 
-def StripStressMarkers(String):
+def StripStressMarkers():
 
-    with open(dpw.cd,'r') as wordfile:
-        for word in wordfile:
-            re.sub("'","",String)
-    return(String)
+    with open("dpw.cd",'r') as wordfile:
+        for line in wordfile:
+            String = line.replace("'", "")
+        return String
 
 
 def CountSyllables(String):
 
-    if (String == ""):
-        return(0)
-    else:
-        return(re.sub(/-/,"",String) + 1)
+    stressmarkcount = 0
+    for line in String:
+        for char in line:
+            if char == "-":
+                stressmarkcount += 1
+    return stressmarkcount + 1
 
-def main(argv): 
+def main(): 
 
-    word = str(sys.argv[1])
-
-    print(CountSyllables(StripStressMarkers($4))
+    print(StripStressMarkers())
 
 
-main(sys.argv[1])
+if __name__ == "__main__":
+    main()
