@@ -15,7 +15,7 @@ def StripStressMarkers():
     with open("dpw.cd",'r') as wordfile:
         for line in wordfile:
             String = line.replace("'", "")
-        return String
+    return String
 
 
 def CountSyllables(String):
@@ -28,8 +28,8 @@ def CountSyllables(String):
     return stressmarkcount + 1
 
 def main(): 
-
-    print(StripStressMarkers())
+    String = StripStressMarkers()
+    print(CountSyllables(String))
 
 
 if __name__ == "__main__":
