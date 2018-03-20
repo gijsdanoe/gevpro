@@ -31,6 +31,7 @@ def haiku(tweet, tweetdict):
     for item in tweet[index:]:
         sentence3.append(word)
     
-    return sentence1, sentence2, sentence3    
+    return sentence1, sentence2, sentence3   
+    
             
             
