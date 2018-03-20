@@ -1,31 +1,26 @@
 #!/usr/bin/python3
 
 import gzip
-import json
 import re
 import nltk
 from random import *
- 
-    
-#def get_syl(string):
-    #"""Returns a list of the syllables of the words in the tweet."""
 
 
 def count_syl(tweet):
     """Counts the syllables of a tweet."""
 
 
-#def generate_haiku(syllables):
-    #"""Converts a tweet into a haiku."""
-
 def count_check(tweet):
-    if count_syl(tweet) == 17:
+    total_count = 0
+    for word in tweet:
+        total_count = total_count + tweet[word]
+    if total_count == 17:
         return True
     else:
         return False
 
+
 def haiku_check(tweet):
-    
 
 
 def tokenize(text):
@@ -43,10 +38,11 @@ def main():
         for line in tweets:
             list_tweets.append(tokenize(line)[1:])
     tweet = list_tweets[randrange(0, len(list_tweets))])
-    while not count_check(tweet) and haiku_check(tweet):
+    syl_info = count_syl(tweet)
+    while not count_check(syl_info) and haiku_check(tweet, syl_info):
         tweet = list_tweets[randrange(0, len(list_tweets))])
+        syl_info = count_syl(tweet)
     print(tweet)
-    
 
 
 if __name__ == "__main__":

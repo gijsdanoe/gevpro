@@ -35,6 +35,8 @@ Wanneer:    Hoelang:    Wat:                                                    
 12-3-2018   1,5 uur     Main() schrijven                                        Jan en Inge
 12-3-2018   3 uur       sylcount.py schrijven                                   Gijs, Thomas, Jan
 19-3-2018   2 uur       Main() aanpassen                                        Inge
+20-3-2018   1 uur       Overleggen over main()                                  Jan, Thomas, Inge
+20-3-2018   0,25 uur    count_check() schrijven                                 Inge
 
 
 
