@@ -67,7 +67,8 @@ def main():
     while not count_check(syl_info) and haiku_check(tweet, syl_info):
         tweet = list_tweets[randrange(0, len(list_tweets))])
         syl_info = count_syl(tweet)
-    print(tweet)
+    zin1, zin2, zin3 = haiku(tweet, syl_info)
+    print("{0}\n{1}\n{2}".format(zin1.join(" "), zin2.join(" "), zin3.join(" ")))
 
 
 if __name__ == "__main__":
