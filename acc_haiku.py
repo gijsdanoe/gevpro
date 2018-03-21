@@ -98,7 +98,7 @@ def tokenize(text):
 
 def main():
     list_tweets = []
-    with gzip.open('/net/corpora/twitter2/Tweets/Tekst/2018/03/20180301:00.out.gz', "rt") as tweets:
+    with gzip.open('/net/corpora/twitter2/Tweets/Tekst/2018/03/20180301:15.out.gz', "rt") as tweets:
         for line in tweets:
             list_tweets.append(tokenize(line)[1:])
     tweet = list_tweets[randrange(0, len(list_tweets))]
