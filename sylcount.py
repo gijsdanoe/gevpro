@@ -10,29 +10,23 @@
 import sys
 import re
 
-def StripStressMarkers():
 
-    with open("dpw.cd",'r') as wordfile:
-        for line in wordfile:
-            String = line.replace("'", "")          
-        return String
 
 def word():
     with open("dpw.cd",'r') as wordfile:
         for line in wordfile:
-            word = re.search(r'\\(.*?)\\', line)
+            word = re.findall(r'\\(.*?)\\', line)
         return word.group(1)
 
-def CountSyllables(String):
-
-    stressmarkcount = 0
-    for line in String:
-        for char in line:
-            if char == "-":
-                stressmarkcount += 1
+def CountSyllables():
     with open("dpw.cd",'r') as wordfile:
         for line in wordfile:
-            word = re.search(r'\\(.*?)\\', line).group(1)
+            wd = re.findall(r'my_regex', line, re.IGNORECASE)
+            stressmarkcount = 0
+            for char in line:
+                if char == "-":
+                     stressmarkcount += 1
+            word = re.findall(r'\\(.*?)\\', line).group(1)
     for char in word:
         if char == "-":
             return stressmarkcount
@@ -40,11 +34,14 @@ def CountSyllables(String):
             return stressmarkcount + 1
 
 
-def main(): 
-    String = StripStressMarkers()
-    mydict = {}
-    mydict[word()] = CountSyllables(String)
-    print(mydict)
+def main():
+    global my_regex
+    my_regex = re.escape(sys.argv[1])
+    with open("dpw.cd", 'r') as wordfile:
+        for line in wordfile:
+            wd = re.findall(r'my_regex', line, re.IGNORECASE)
+
+    print(wd)
 
 
 if __name__ == "__main__":
