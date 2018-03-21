@@ -11,6 +11,7 @@ def count_syl(tweet):
 
 
 def count_check(tweet, tweetdict):
+    """Checks if a tweet consists of exactly 17 syllables."""
     total_count = 0
     for word in tweet:
         total_count = total_count + tweetdict[word]
@@ -20,8 +21,9 @@ def count_check(tweet, tweetdict):
         return False
 
 
-def haiku_check(tweet, tweetdict):
 
+def haiku_check(tweet, tweetdict):
+    """Checks if a tweet is compatible with the haiku format (5-7-5)"""
     index = 0
     word = tweet[index]
     syltotal = tweetdict[word]
@@ -49,6 +51,7 @@ def haiku_check(tweet, tweetdict):
 
 
 def generate_haiku(tweet, tweetdict):
+    """Transforms a tweet into three haiku sentences"""
     sentence1 = [tweet[0]]
     sentence2 = []
     sentence3 = []
