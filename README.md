@@ -20,6 +20,15 @@ Count_syl:
 Generate_haiku:
     Adds counts of words and checks if they are in haiku format
 
+Make_dict:
+    makes a dictionary of the dpw file, names and syllables.
+    Example = {"appel":"ap-pel"}
+    for word in tweet:
+        syl_count = Example[word].count("-") + 1
+
+pickle:
+    file format for dpw dictionary
+
 Bijeenkomsten:
 ma 12-3 13.00-17.00
 ma 19-3 15.00-17.00
