@@ -51,7 +51,8 @@ Wanneer:    Hoelang:    Wat:                                                    
 20-3-2018   0,5 uur     haiku_check schrijven                                   Jan
 20-3-2018   0,5 uur     generate_haiku schrijven                                Thomas
 20-3-2018   3 uur       sylcount schrijven                                      Gijs
-20-2-2018   1,5 uur     functies testen en debuggen                             Jan, Thomas, Inge
+20-3-2018   1,5 uur     functies testen en debuggen                             Jan, Thomas, Inge
+28-3-2018   2 uur       
  
 
 
