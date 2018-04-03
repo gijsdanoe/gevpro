@@ -23,7 +23,7 @@ def CountSyllables():
         for line in wordfile:
             wd = re.findall(r'my_regex', line, re.IGNORECASE)
             stressmarkcount = 0
-            for char in line:
+            for char in wd:
                 if char == "-":
                      stressmarkcount += 1
             word = re.findall(r'\\(.*?)\\', line).group(1)
@@ -39,7 +39,7 @@ def main():
     my_regex = re.escape(sys.argv[1])
     with open("dpw.cd", 'r') as wordfile:
         for line in wordfile:
-            wd = re.findall(r'my_regex', line, re.IGNORECASE)
+            wd = re.findall(r'{0}'.format(my_regex), line, re.IGNORECASE)
 
     print(wd)
 
