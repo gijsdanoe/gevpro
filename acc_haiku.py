@@ -1,56 +1,60 @@
 #!/usr/bin/python3
 
+import tweepy
+from keys import *
 import gzip
 import re
 import nltk
 import pickle
 from random import *
+from time import sleep
 
 def word_check(tweet, tweetdict):
     for word in tweet:
-        if word not in tweetdict:
+        if word.lower() not in tweetdict:
             return False
-        elif word in "-.!?,:;#()@/0123456789'\"":
-            pass
     return True
 
 
 def count_check(tweet, tweetdict):
     """Checks if a tweet consists of exactly 17 syllables."""
-    total_count = 0
-    for word in tweet:
-        if word not in "-.!?,:;#()@/0123456789'\"":
-            total_count = total_count + tweetdict[word]
-    if total_count == 17:
-        return True
-    else:
+    if not word_check(tweet, tweetdict):
         return False
+    else:
+        total_count = 0
+        for word in tweet:
+            total_count += tweetdict[word.lower()]
+        if total_count == 17:
+            return True
+        else:
+            return False
 
 def haiku_check(tweet, tweetdict):
     """Checks if a tweet is compatible with the haiku format (5-7-5)"""
+    if not count_check(tweet, tweetdict):
+        return False
     if tweet == []:
         return False
     index = 0
     word = tweet[index]
-    syltotal = tweetdict[word]
+    syltotal = tweetdict[word.lower()]
     while True:
-        word = word.lower()
         if syltotal < 5:
             index +=1
             word = tweet[index]
-            syltotal += tweetdict[word]
+            syltotal += tweetdict[word.lower()]
         elif syltotal == 5:
             break
         else:
             return False
     index +=1
     word = tweet[index]
-    syltotal += tweetdict[word]
+    syltotal += tweetdict[word.lower()]
     while True:
         if syltotal < 12:
             index +=1
             word = tweet[index]
-            syltotal += tweetdict[word]
+            syltotal += tweetdict[word.lower()]
         elif syltotal == 12:
             return True
         else:
@@ -64,68 +68,69 @@ def generate_haiku(tweet, tweetdict):
     sentence3 = []
     index = 0
     word = tweet[index]
-    syltotal = tweetdict[word]
+    syltotal = tweetdict[word.lower()]
     while True:
         if syltotal < 5:
             index +=1
             word = tweet[index]
-            syltotal += tweetdict[word]
+            syltotal += tweetdict[word.lower()]
             sentence1.append(word)
         elif syltotal == 5:
             break
     index +=1
     word = tweet[index]
-    syltotal += tweetdict[word]
+    syltotal += tweetdict[word.lower()]
     while True:
         if syltotal < 12:
             sentence2.append(word)
             index +=1
             word = tweet[index]
-            syltotal += tweetdict[word]
+            syltotal += tweetdict[word.lower()]
         elif syltotal == 12:
             sentence2.append(word)
 
             break
     index += 1
-    word = tweet[index]
     for item in tweet[index:]:
-        sentence3.append(word)
+        sentence3.append(item)
     return sentence1, sentence2, sentence3   
-    
-# niet goed
-
-def tokenize(text):
-    sent_split = re.compile('[^ ].*?[ .!?]\'?')
-    sentences = sent_split.findall(text)
-    tokens = [" ".join(nltk.word_tokenize(sentences[i], "dutch"))
-              for i in range(len(sentences))]
-    tokens = [re.sub(r"'([^ 0-9])", r"' \1", token) for token in tokens]
-    return tokens
 
 
 def main():
-    words = pickle.load(open("dpw.p", "rb"))
-    tweetdict = words
-    list_tweets = []
-    with open('/net/corpora/twitter2/Tweets/Tekst/2018/04/20180403:16.out', "rt") as tweets:
-        for line in tweets:
-            line = line.lower()
-            line = tokenize(line)
-            line = " ".join(line)
-            list_tweets.append(line.split(' '))
-    tweet = list_tweets[6749]
-    print(tweet)
+    counter = 0
     while True:
-        if word_check(tweet, words) == False: 
-            tweet
-        elif count_check(tweet, words) == False:
-            tweet
-        elif haiku_check(tweet, words) == False:
-            tweet
-        else:
+        if counter == 15:
             break
-    sentence1, sentence2, sentence3 = generate_haiku(tweet, words)
-    print("{0}\n{1}\n{2}".format(" ".join(sentence1), " ".join(sentence2), " ".join(sentence3)))
+        words = pickle.load(open("dpw.p", "rb"))
+        tweetdict = words
+        for mark in "-.!?,:;#()@/'\"":
+            tweetdict[mark] = 0
+        list_tweets = []
+        months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+        hours = months + ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '00']
+        days = hours[:-1] + ['24', '25', '26', '27', '28']
+        with gzip.open('/net/corpora/twitter2/Tweets/Tekst/20{0}/{1}/20{0}{1}{2}:{3}.out.gz'.format(randrange(11,18), months[randrange(0, len(months))], days[randrange(0, len(days))], hours[randrange(0, len(hours))]), "rt") as tweets:
+            for line in tweets:
+                line = nltk.word_tokenize(line, "dutch")
+                line = " ".join(line)
+                list_tweets.append(line.split(' '))
+        tweet_u = list_tweets[randrange(0, len(list_tweets))]
+        tweet = tweet_u[1:]
+        while not haiku_check(tweet, words):
+            tweet_u = list_tweets[randrange(0, len(list_tweets))]
+            tweet = tweet_u[1:]
+        sentence1, sentence2, sentence3 = generate_haiku(tweet, words)
+        print("Getweet door {0}:\n{1}\n{2}\n{3}".format(tweet_u[0], " ".join(sentence1), " ".join(sentence2), " ".join(sentence3)))
+        auth = tweepy.OAuthHandler(ckey,csecret)
+        auth.set_access_token(akey, asecret)
+
+        api = tweepy.API(auth)
+
+        api.update_status("Getweet door {0}:\n{1}\n{2}\n{3}".format(tweet_u[0], " ".join(sentence1), " ".join(sentence2), " ".join(sentence3)))
+        sleep(5)
+        counter += 1
+    
+
 
 
 if __name__ == "__main__":

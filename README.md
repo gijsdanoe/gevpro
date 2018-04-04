@@ -52,7 +52,10 @@ Wanneer:    Hoelang:    Wat:                                                    
 20-3-2018   0,5 uur     generate_haiku schrijven                                Thomas
 20-3-2018   3 uur       sylcount schrijven                                      Gijs
 20-3-2018   1,5 uur     functies testen en debuggen                             Jan, Thomas, Inge
-28-3-2018   2 uur       
+28-3-2018   2 uur       functies testen en debuggen                             Jan, Thomas, Inge, Gijs
+03-4-2018   4 uur       Functies herschrijven, pickle aangepast                 Jan, Thomas, Gijs
+04-4-2018   4 uur       Programma afgemaakt, twitterbot, tokenizer herschreven  Jan, Thomas, Gijs, Inge
+                        pickle bestand aangepast
  
 
 

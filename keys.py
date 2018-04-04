@@ -1,5 +1,5 @@
 
-ckey = 'APqVAywAKEivd1ibASvGpKOXY'
-csecret =  'vfWeMQF6Q5QbmTOZopZsF96gkDKXqXKQhztSBKrNv2Wskx90fQ'
-akey =  '976410622035415040-sVDcS3umZadwK6SIifEj8zVg3xfT33J'
-asecret = 'msdQwXBgZPVTsWL6P7jLQPPAonz00VxV1tsOQZsxJnUPc'
+ckey = 'Bjn76hPz7qsWjqkh4hY2zWzYT'
+csecret =  'pYC405qXyApORaAEoerDQG4yzao0zt50ZqnUtESL24PUd6g5Va'
+akey =  '976410622035415040-ebLqRKOXP2nr2UVsRy0uwFKh0d4noEk'
+asecret = 'psL5okszcHfmBy59CkYpm3qPvkYXkDUmIcYKFoEM2EUZR'
