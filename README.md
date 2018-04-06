@@ -1,71 +1,42 @@
+acc_haiku.py by Thomas Tan, Jan Harms, Gijs Danoe, Inge Salomons
 
 
-### Planning ###
-
-1. Get tweets (net/corpora)
-2. Read tweets 
-3. Generating haikus 
-4. Presenting haikus
-
-Main function:
-    Reading tweets from path in command line argument with json
-    Method for generating haikus
-    Presenting haikus (printing or posting on Twitter) 
-
-Count_syl:
-    Input: list of words
-    Makes dictionary/list with tuples of all the words and their syllable count
-    Output that
-
-Generate_haiku:
-    Adds counts of words and checks if they are in haiku format
-
-Make_dict:
-    makes a dictionary of the dpw file, names and syllables.
-    Example = {"appel":"ap-pel"}
-    for word in tweet:
-        syl_count = Example[word].count("-") + 1
-
-pickle:
-    file format for dpw dictionary
-
-Bijeenkomsten:
-ma 12-3 13.00-17.00
-ma 19-3 15.00-17.00
-di 20-3 13.00-17.00
-wo 21-3 11.00-13.00
-
+### Information about the program ###
+When running the program acc_haiku.py (without arguments) in Python3,
+the program randomly picks a tweet from a database of Dutch tweets from
+2011 until 2018 and checks if the tweet meets the requirements.
+These requirements are: consisting of only words that are in the CELEX database;
+consisting of exactly 17 syllables and having the haiku structure of 5-7-5 syllables.
+If a tweet meets the requirements, the program prints it in haiku form and automatically
+tweets the haiku on the Twitter account 'HaikuPerOngeluk'.
+If a tweet does not meet the requirements, the program randomly picks another tweet,
+until a tweet is found that does.
+The program repeats this process 15 times, with a break of 5 seconds in between.
 
 
 ### Logboek ###
-Wanneer:    Hoelang:    Wat:                                                    Wie:
-7-3-2018    2 uur       Team en repository aanmaken en lokaal klonen            Allemaal
-12-3-2018   1 uur       Overleggen over functies                                Allemaal
-12-3-2018   1 uur       Main() en tokenize() schrijven                          Inge
-12-3-2018   1,5 uur     Main() schrijven                                        Jan en Inge
-12-3-2018   3 uur       sylcount.py schrijven                                   Gijs, Thomas, Jan
-19-3-2018   2 uur       Main() aanpassen                                        Inge, Jan
-19-3-2018   2 uur       sylcount schrijven                                      Gijs
-20-3-2018   1 uur       Overleggen over main()                                  Jan, Thomas, Inge
-20-3-2018   0,5 uur     count_check() schrijven en main() aanpassen             Inge
-20-3-2018   0,5 uur     haiku_check schrijven                                   Jan
-20-3-2018   0,5 uur     generate_haiku schrijven                                Thomas
-20-3-2018   3 uur       sylcount schrijven                                      Gijs
-20-3-2018   1,5 uur     functies testen en debuggen                             Jan, Thomas, Inge
-28-3-2018   2 uur       functies testen en debuggen                             Jan, Thomas, Inge, Gijs
-03-4-2018   4 uur       Functies herschrijven, pickle aangepast                 Jan, Thomas, Gijs
-04-4-2018   4 uur       Programma afgemaakt, twitterbot, tokenizer herschreven  Jan, Thomas, Gijs, Inge
-                        pickle bestand aangepast
- 
-
-
-
-
-
-
-
-
-
+Wanneer:    Hoelang:    Wat:                                                        Wie:
+07-3-2018    2 uur      Team en repository Bitbucket aanmaken en lokaal klonen      Jan, Thomas, Gijs, Inge
+12-3-2018   1 uur       Overleggen over functies                                    Jan, Thomas, Gijs, Inge
+12-3-2018   1 uur       main() schrijven en tokenize() toevoegen                    Inge
+12-3-2018   1,5 uur     main() schrijven                                            Jan en Inge
+12-3-2018   3 uur       sylcount.py schrijven                                       Gijs, Thomas, Jan
+19-3-2018   2 uur       Main() aanpassen                                            Inge, Jan
+19-3-2018   2 uur       sylcount.py schrijven                                       Gijs
+20-3-2018   1 uur       Overleggen over main()                                      Jan, Thomas, Inge
+20-3-2018   0,5 uur     count_check() schrijven en main() aanpassen                 Inge
+20-3-2018   0,5 uur     haiku_check() schrijven                                     Jan
+20-3-2018   0,5 uur     generate_haiku(0 schrijven                                  Thomas
+20-3-2018   3 uur       sylcount.py schrijven                                       Gijs
+20-3-2018   1,5 uur     Functies testen en debuggen                                 Jan, Thomas, Inge
+28-3-2018   2 uur       Functies testen en debuggen, make_dict.py schrijven 
+...                         en dpw.p aanmaken                                       Jan, Thomas, Inge, Gijs
+03-4-2018   4 uur       Functies testen en debuggen, sylcount.py in make_dict.py
+...                         integreren en nieuwe dwp.p aanmaken                     Jan, Thomas, Gijs
+04-4-2018   4 uur       Programma afmaken, twitterbot realizeren,
+...                         tokenize() in main() integreren                         Jan, Thomas, Gijs, Inge
+05-4-2018   2 uur       pep8 en pycodestyle op code toepassen, comments toevoegen,
+...                         informatie in README.md schrijven                       Inge
 
 
 
