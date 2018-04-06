@@ -13,6 +13,7 @@ import nltk
 import pickle
 from random import *
 from time import sleep
+from nltk.tokenize.moses import MosesDetokenizer
 
 
 def word_check(tweet, tweetdict):
@@ -101,14 +102,14 @@ def generate_haiku(tweet, tweetdict):
     index += 1
     for item in tweet[index:]:
         sentence3.append(item)
-    return sentence1, sentence2, sentence3
+    detokenizer = MosesDetokenizer()
+    return [detokenizer.detokenize(sentence1, return_str=True),
+            detokenizer.detokenize(sentence2, return_str=True),
+            detokenizer.detokenize(sentence3, return_str=True)]
 
 
 def main():
-    counter = 0
     while True:
-        if counter == 15:
-            break
         words = pickle.load(open("dpw.p", "rb"))
         tweetdict = words
         for mark in "-.!?,:;#()@/'\"":
@@ -120,34 +121,32 @@ def main():
                           '19', '20', '21', '22', '23', '00']
         days = hours[:-1] + ['24', '25', '26', '27', '28']
         with gzip.open(
-            "/net/corpora/twitter2/Tweets/Tekst \
-            /20{0}/{1}/20{0}{1}{2}:{3}.out.gz"
+            "/net/corpora/twitter2/Tweets/Tekst/"
+            "20{0}/{1}/20{0}{1}{2}:{3}.out.gz"
             .format(randrange(11, 18), months[randrange(0, len(months))],
                     days[randrange(0, len(days))],
                     hours[randrange(0, len(hours))]), "rt") as tweets:
             for line in tweets:
                 line = nltk.word_tokenize(line, "dutch")
                 line = " ".join(line)
-                list_tweets.append(line.split(' '))
+                list_tweets.append(line.split(" "))
         tweet_u = list_tweets[randrange(0, len(list_tweets))]
         tweet = tweet_u[1:]
         while not haiku_check(tweet, words):
             tweet_u = list_tweets[randrange(0, len(list_tweets))]
             tweet = tweet_u[1:]
-        sentence1, sentence2, sentence3 = generate_haiku(tweet, words)
-        print("Getweet door {0}:\n{1}\n{2}\n{3}".format(tweet_u[0],
-              " ".join(sentence1), " ".join(sentence2), " ".join(sentence3)))
+        [sentence1, sentence2, sentence3] = generate_haiku(tweet, words)
+        print("#accidentalhaiku door @{0}:\n{1}\n{2}\n{3}".format(tweet_u[0],
+              sentence1, sentence2, sentence3))
         auth = tweepy.OAuthHandler(ckey, csecret)
         auth.set_access_token(akey, asecret)
 
         api = tweepy.API(auth)
 
         api.update_status(
-            "Getweet door {0}:\n{1}\n{2}\n{3}"
-            .format(tweet_u[0], " ".join(sentence1), " "
-                    .join(sentence2), " ".join(sentence3)))
-        sleep(5)
-        counter += 1
+            "#accidentalhaiku door @{0}:\n{1}\n{2}\n{3}"
+            .format(tweet_u[0], sentence1, sentence2, sentence3))
+        sleep(86400)
 
 
 if __name__ == "__main__":

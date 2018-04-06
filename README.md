@@ -11,7 +11,11 @@ If a tweet meets the requirements, the program prints it in haiku form and autom
 tweets the haiku on the Twitter account 'HaikuPerOngeluk'.
 If a tweet does not meet the requirements, the program randomly picks another tweet,
 until a tweet is found that does.
-The program repeats this process 15 times, with a break of 5 seconds in between.
+The program repeats this process every 86400 seconds, so every day.
+To keep the program running while exiting the shell, use the commands
+'$ nohup python3 acc_haiku.py &' and '$ exit'.
+To stop the program from running, look up its process number 
+with the command '$ ps -x' (for example 123) and then do '$ kill 123'.
 
 
 ### Logboek ###
@@ -35,9 +39,5 @@ Wanneer:    Hoelang:    Wat:                                                    
 ...                         integreren en nieuwe dwp.p aanmaken                     Jan, Thomas, Gijs
 04-4-2018   4 uur       Programma afmaken, twitterbot realizeren,
 ...                         tokenize() in main() integreren                         Jan, Thomas, Gijs, Inge
-05-4-2018   2 uur       pep8 en pycodestyle op code toepassen, comments toevoegen,
-...                         informatie in README.md schrijven                       Inge
-
-
-
-10-04-18                 Repository public/gertjan en erwin toevoegen           Allemaal
+05-4-2018   3 uur       pep8 en pycodestyle toepassen, comments toevoegen, info
+...                         in README.md schrijven, detokenizer toevoegen           Inge
