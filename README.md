@@ -1,4 +1,5 @@
-acc_haiku.py by Thomas Tan, Jan Harms, Gijs Danoe, Inge Salomons
+### acc_haiku.py ###
+by Thomas Tan, Jan Harms, Gijs Danoe, Inge Salomons
 
 
 ### Information about the program ###
