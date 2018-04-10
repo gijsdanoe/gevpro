@@ -45,25 +45,21 @@ def haiku_check(tweet, tweetdict):
     if tweet == []:
         return False
     index = 0
-    word = tweet[index]
-    syltotal = tweetdict[word.lower()]
+    syltotal = tweetdict[tweet[index].lower()]
     while True:
         if syltotal < 5:
             index += 1
-            word = tweet[index]
-            syltotal += tweetdict[word.lower()]
+            syltotal += tweetdict[tweet[index].lower()]
         elif syltotal == 5:
             break
         else:
             return False
     index += 1
-    word = tweet[index]
-    syltotal += tweetdict[word.lower()]
+    syltotal += tweetdict[tweet[index].lower()]
     while True:
         if syltotal < 12:
             index += 1
-            word = tweet[index]
-            syltotal += tweetdict[word.lower()]
+            syltotal += tweetdict[tweet[index].lower()]
         elif syltotal == 12:
             return True
         else:
@@ -76,29 +72,31 @@ def generate_haiku(tweet, tweetdict):
     sentence2 = []
     sentence3 = []
     index = 0
-    word = tweet[index]
-    syltotal = tweetdict[word.lower()]
+    syltotal = tweetdict[tweet[index].lower()]
     while True:
         if syltotal < 5:
             index += 1
-            word = tweet[index]
-            syltotal += tweetdict[word.lower()]
-            sentence1.append(word)
+            syltotal += tweetdict[tweet[index].lower()]
+            sentence1.append(tweet[index])
         elif syltotal == 5:
             break
     index += 1
-    word = tweet[index]
-    syltotal += tweetdict[word.lower()]
+    if tweet[index] in "-.!?,:;)'\"":
+        sentence1.append(tweet[index])
+        index += 1
+    syltotal += tweetdict[tweet[index].lower()]
     while True:
         if syltotal < 12:
-            sentence2.append(word)
+            sentence2.append(tweet[index])
             index += 1
-            word = tweet[index]
-            syltotal += tweetdict[word.lower()]
+            syltotal += tweetdict[tweet[index].lower()]
         elif syltotal == 12:
-            sentence2.append(word)
+            sentence2.append(tweet[index])
             break
     index += 1
+    if tweet[index] in "-.!?,:;)'\"":
+        sentence2.append(tweet[index])
+        index += 1
     for item in tweet[index:]:
         sentence3.append(item)
     detokenizer = MosesDetokenizer()
@@ -132,6 +130,9 @@ def main():
         tweet_u = list_tweets[randrange(0, len(list_tweets))]
         tweet = tweet_u[1:]
     [sentence1, sentence2, sentence3] = generate_haiku(tweet, tweetdict)
+    sentence1 = sentence1.replace("# ", "#")
+    sentence2 = sentence2.replace("# ", "#")
+    sentence3 = sentence3.replace("# ", "#")
     print("#accidentalhaiku door {0}:\n{1}\n{2}\n{3}".format(tweet_u[0],
           sentence1, sentence2, sentence3))
 

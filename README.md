@@ -37,4 +37,4 @@ Wanneer:    Hoelang:    Wat:                                                    
 ...                         tokenize() in main() integreren                         Jan, Thomas, Gijs, Inge
 05-4-2018   3 uur       pep8 en pycodestyle toepassen, comments toevoegen, info
 ...                         in README.md schrijven, detokenizer toevoegen           Inge
-10-4-2018   1 uur       Checken of alles goed werkt en inleveren                    Jan en Inge
+10-4-2018   2 uur       Checken of alles goed werkt en inleveren                    Jan en Inge
