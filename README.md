@@ -8,19 +8,14 @@ the program randomly picks a tweet from a database of Dutch tweets from
 These requirements are: consisting of only words that are in the CELEX database;
 consisting of exactly 17 syllables and having the haiku structure of 5-7-5 syllables.
 If a tweet meets the requirements, the program prints it in haiku form and automatically
-tweets the haiku on the Twitter account 'HaikuPerOngeluk'.
+tweets the haiku on the Twitter account 'HaikuPerOngeluk' along with the name of the user of the tweet.
 If a tweet does not meet the requirements, the program randomly picks another tweet,
 until a tweet is found that does.
-The program repeats this process every 86400 seconds, so every day.
-To keep the program running while exiting the shell, use the commands
-'$ nohup python3 acc_haiku.py &' and '$ exit'.
-To stop the program from running, look up its process number 
-with the command '$ ps -x' (for example 123) and then do '$ kill 123'.
 
 
 ### Logboek ###
 Wanneer:    Hoelang:    Wat:                                                        Wie:
-07-3-2018    2 uur      Team en repository Bitbucket aanmaken en lokaal klonen      Jan, Thomas, Gijs, Inge
+07-3-2018   2 uur       Team en repository Bitbucket aanmaken en lokaal klonen      Jan, Thomas, Gijs, Inge
 12-3-2018   1 uur       Overleggen over functies                                    Jan, Thomas, Gijs, Inge
 12-3-2018   1 uur       main() schrijven en tokenize() toevoegen                    Inge
 12-3-2018   1,5 uur     main() schrijven                                            Jan en Inge
@@ -41,3 +36,4 @@ Wanneer:    Hoelang:    Wat:                                                    
 ...                         tokenize() in main() integreren                         Jan, Thomas, Gijs, Inge
 05-4-2018   3 uur       pep8 en pycodestyle toepassen, comments toevoegen, info
 ...                         in README.md schrijven, detokenizer toevoegen           Inge
+10-4-2018   1 uur       Checken of alles goed werkt en inleveren                    Jan en Inge
