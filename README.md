@@ -12,6 +12,7 @@ If a tweet meets the requirements, the program prints it in haiku form and autom
 tweets the haiku on the Twitter account 'HaikuPerOngeluk' along with the name of the user of the tweet.
 If a tweet does not meet the requirements, the program randomly picks another tweet,
 until a tweet is found that does.
+Twitter account: https://twitter.com/haikuperongeluk
 
 
 ### Logboek ###
