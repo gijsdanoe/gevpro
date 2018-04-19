@@ -23,4 +23,5 @@ def main():
     pickle.dump(dicto, open("dpw.p", "wb"))
 
 
-main()
+if __name__ == "__main__":
+    main()
